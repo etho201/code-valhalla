@@ -1,2 +1,2 @@
 # code-valhalla
-Solving various coding challenges and exercising coding logic -- for fun!
+Solving various coding challenges and exercising coding logic — for fun!
