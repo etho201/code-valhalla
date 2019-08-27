@@ -1,53 +1,31 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GuessTheMovie {
     public static void main(String[] args) throws Exception {
         File file = new File("movies.txt");
         Scanner scanner = new Scanner(file);
-        Scanner scanner1 = new Scanner(file);
-        Scanner input = new Scanner(System.in);
-
-
-        // Get array length
-        int movieCount = 0;
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            movieCount++;
-        }
-        System.out.println(movieCount);
-        int movie = (int) (Math.random() * movieCount);
-        // End get array length
-
-
+        //Scanner input = new Scanner(System.in);
 
         // Build list of movies
-        String[] movies = new String[movieCount];
-        movieCount = 0;
-        while (scanner1.hasNextLine()) {
-            movies[movieCount++] = scanner1.nextLine();
-        }
-        System.out.println(movies[10]);
-        // End build list of movies
-
-
-
-        // Okay, let's ask the user to start guessing.
-        System.out.print("You are guessing: ");
-
-        //char[] guess = new char[10];
-        String guess = "r";
-        // Step through movie name as array
-
-
-        // Printing from array of characters.
-        for (int i = 0; i<movies[10].length(); i++) {
-            System.out.print(movies[10].charAt(i));
+        ArrayList<String> movieList = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            movieList.add(scanner.nextLine());
         }
 
-        System.out.println();
+        // Print list of movies
+        for (String s : movieList) {
+            System.out.println(s);
+        }
 
-        for (int i = 0; i<movies[10].length(); i++) {
+        // Select random movie from list
+        int movieChallenge = (int) (Math.random() * movieList.size());
+
+        // Print info about randomly selected movie
+        System.out.println("Random movie: " + movieList.get(movieChallenge));
+        System.out.println(movieList.get(movieChallenge).length());
+        for (int i = 0; i<movieList.get(movieChallenge).length(); i++) {
             System.out.print("_ ");
         }
     }
