@@ -1,4 +1,4 @@
-##Notes
+## Notes
 
 How to structure a game...
 
