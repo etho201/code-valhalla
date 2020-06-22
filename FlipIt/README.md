@@ -4,14 +4,15 @@
 
 `int[][] twoDimentional = {{1,5},{2,6},{3,7},{4,8},{5,9}};`
 
+To better visualize the data in the 2D array, may be helpful to write it this way:
 ```
 int[][] twoDimentional = {
-  {1,5},
-  {2,6},
-  {3,7},
-  {4,8},
-  {5,9}
-};
+        {1, 5},
+        {2, 6},
+        {3, 7},
+        {4, 8},
+        {5, 9}
+}
 ```
 
 Conceptual view:
