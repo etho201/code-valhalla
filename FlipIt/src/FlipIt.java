@@ -1,11 +1,19 @@
 public class FlipIt {
     public static void main(String[] args) {
-        int[][] twoDimentional = {{1,5},{2,6},{3,7},{4,8},{5,9}};
+
+        int[][] twoDimentional = {
+                {1, 5},
+                {2, 6},
+                {3, 7},
+                {4, 8},
+                {5, 9}
+        };
+
         flipItVerticalAxis(twoDimentional);
 
-        for (int i = 0; i<twoDimentional.length; i++) {
+        for (int[] ints : twoDimentional) {
             for (int j = 0; j < twoDimentional[0].length; j++) {
-                System.out.print(twoDimentional[i][j]);
+                System.out.print(ints[j]);
             }
         }
     }
