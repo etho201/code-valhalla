@@ -1,0 +1,12 @@
+hello
+world
+goodbye
+class
+assignment
+file
+democracy
+fun
+calculator
+mathematics
+truth
+beauty
