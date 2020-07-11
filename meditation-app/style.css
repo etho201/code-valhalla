@@ -50,7 +50,7 @@
 }
 */
 
-.time-dislay {
+.time-display {
     position: absolute;
     bottom: 10%;
     color: white;
@@ -97,6 +97,10 @@ video {
 
 .sound-picker button:nth-child(2) {
     background: #a14f49;
+}
+
+.sound-picker button:nth-child(3) {
+    background: #BDB76B;
 }
 
 .sound-picker button img {
