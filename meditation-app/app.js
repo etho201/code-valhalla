@@ -50,8 +50,24 @@ const app = () => {
         checkPlaying();
     })
 
-    timeSelect[1].addEventListener('click', () => {
+    sounds[2].addEventListener('click', () => {
+        video.src = './video/grass.mp4';
+        song.src = './sounds/grass.mp3';
+        checkPlaying();
+    })
+
+    //Time Selection
+    timeSelect[0].addEventListener('click', () => {
         timeDisplay.innerHTML = "2:00";
+        setTimeout(checkPlaying(), timeSelect[0].data-time);
+    })
+    timeSelect[1].addEventListener('click', () => {
+        timeDisplay.innerHTML = "5:00";
+        setTimeout(checkPlaying(), 3000);
+    })
+    timeSelect[2].addEventListener('click', () => {
+        timeDisplay.innerHTML = "10:00";
+        setTimeout(checkPlaying(), 3000);
     })
 
 
