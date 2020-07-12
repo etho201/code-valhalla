@@ -18,13 +18,21 @@ const app = () => {
     outline.style.strokeDasharray = outlineLength;
     outline.style.strokeDashoffset = outlineLength;
 
+    //Pick different sounds
+    sounds.forEach(sound => {
+        sound.addEventListener("click", function () {
+            song.src = this.getAttribute("data-sound");
+            video.src = this.getAttribute("data-video");
+            checkPlaying(song);
+        });
+    });
 
     //Play sound
     play.addEventListener('click', () => {
-        checkPlaying();
+        checkPlaying(song);
     });
 
-    const checkPlaying = () => {
+    const checkPlaying = song => {
         //Function to stop and play the sounds
         if (song.paused) {
             song.play();
@@ -35,41 +43,37 @@ const app = () => {
             video.pause();
             play.src = './svg/play.svg';
         }
-    }
+    };
 
-    sounds[0].addEventListener('click', () => {
-        video.src = './video/rain.mp4';
-        song.src = './sounds/rain.mp3';
-        checkPlaying();
-    })
+    //animate the circle 
+    song.ontimeupdate = () => {
+        let currentTime = song.currentTime;
+        let elapsed = fakeDuration - currentTime;
+        let seconds = Math.floor(elapsed % 60);
+        let minutes = Math.floor(elapsed / 60);
 
+        //animate the circle
+        let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
+        outline.style.strokeDasharray = progress;
 
-    sounds[1].addEventListener('click', () => {
-        video.src = './video/beach.mp4';
-        song.src = './sounds/beach.mp3';
-        checkPlaying();
-    })
+        //animate the text
+        timeDisplay.textContent = `${minutes}:${seconds}`;
 
-    sounds[2].addEventListener('click', () => {
-        video.src = './video/grass.mp4';
-        song.src = './sounds/grass.mp3';
-        checkPlaying();
-    })
+        if (currentTime >= fakeDuration) {
+            song.pause();
+            video.pause();
+            song.currentTime = 0;
+            play.scr = './svg/play.svg';
+        }
+    };
 
     //Time Selection
-    timeSelect[0].addEventListener('click', () => {
-        timeDisplay.innerHTML = "2:00";
-        setTimeout(checkPlaying(), timeSelect[0].data-time);
-    })
-    timeSelect[1].addEventListener('click', () => {
-        timeDisplay.innerHTML = "5:00";
-        setTimeout(checkPlaying(), 3000);
-    })
-    timeSelect[2].addEventListener('click', () => {
-        timeDisplay.innerHTML = "10:00";
-        setTimeout(checkPlaying(), 3000);
-    })
-
+    timeSelect.forEach(option => {
+        option.addEventListener("click", function () {
+            fakeDuration = this.getAttribute("data-time");
+            timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`;
+        });
+    });
 
 };
 
